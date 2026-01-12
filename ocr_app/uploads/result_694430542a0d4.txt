@@ -1,0 +1,7 @@
+Weigh Calculations
+
+NETT Weight (kg) 35,000
+Product NETT (kg) 35,000
+Total Difference 35,000
+
+Total Cost 0.00

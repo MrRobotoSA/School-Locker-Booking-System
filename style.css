@@ -1,0 +1,146 @@
+    h1, h2, p {
+        text-align: center;
+        font-family: monospace;
+        font-family: cursive;
+        padding-bottom: 0%;
+        padding-top: 0%;
+    }
+    /*This styles the bg video that is behind all the text*/
+    video#vid {
+        position: relative;
+        z-index: 0;
+    }
+    video#bgvid {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        background-size: cover;
+        z-index: -1;
+    }
+    p#eduvid {
+        text-align: center;
+        align-content: center;
+    }
+    form#eduform {
+        text-align: center;
+        align-content: center;
+    }
+    /* This styles the MAIN VIDEO*/
+    section#onething {
+        align-content: center;
+        text-align: center;
+        margin-bottom: 4%;
+        margin-top: 0%;
+        border-block: 2px solid thick;
+    }
+    fieldset {
+       width: 90%;
+       border: none;
+    }
+    fieldset.area {
+       margin-top: none;
+    }
+    legend {
+    font-weight: bold;
+    padding-bottom: 0%;
+    }
+    /*The bellow section styles the educational multiple choice question background
+    NOTE THE BACKGROUND IMAGE WAS REMOVED TO MAKE THE BACKGROUND AND SUCCESS ANIMATION VIDEO BACKGROUND TO MATCH*/
+    div.eduQ {
+        /*background-image: url(80617.jpg);*/ 
+        background-color: rgb(13, 13, 20);
+        padding: 3%;
+        width: 50%;
+        text-align: center;
+        align-content: center;
+        margin-right: auto;
+        margin-left: auto; 
+        color: rgb(255, 255, 255);
+        font-weight: bolder;
+        font-size: 135%;
+        font-family: monospace, Arial, sans-serif;
+        box-shadow: 5px 5px rgba(88, 88, 88, 0.322);
+        overflow: contain;
+    }
+    section.eduimg {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h3 {
+        text-decoration: underline;
+    }
+    /* THE BELOW 3 CSS STYLE RULES WERE WRITTEN TO CONTROL THE MAIN VIDEO IFRAME AND MAKE IT RESPONSIVE */
+    .intrinsic-container {
+      position: relative;
+      height: 0;
+      overflow: hidden;
+    }
+    
+    /* 16x9 Aspect Ratio */
+    .intrinsic-container-16x9 {
+      padding-bottom: 56.25%;
+    }
+    
+    /* 4x3 Aspect Ratio */
+    .intrinsic-container-4x3 {
+      padding-bottom: 75%;
+    }
+    
+    .intrinsic-container iframe {
+      position: absolute;
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    label:hover {
+      background-color:  rgb(98, 0, 255);
+      border: 2 solid rgb(241, 217, 0);
+      padding: 0%;
+      box-shadow: 5px 5px 5px  rgb(2, 0, 131) inset;
+    }
+    /* The below styles the educational question background and the celebration video. 
+    It puts the educaional video at the back of the text here*/
+    .eduQ { margin-top: 10%;
+            padding-bottom: 10%;
+            position: relative;
+            align-items: center;
+            text-align: center;
+            background-color: rgb(3, 0, 40);
+            }
+    .eduQ video {
+        position:relative;
+        z-index:-1;
+    }
+    .celebrate {
+        position:absolute;
+        top:0;
+        left:0;
+        z-index:1;
+    }
+    /*belows code styles the link to next video and question text that pops up for choosing the correct answer*/
+    #correct {
+        color: rgb(195, 0, 255);
+    }
+    #correct:hover {
+        background-color:  rgb(98, 0, 255);
+        border: 2 solid rgb(241, 217, 0);
+        padding: 0%;
+        box-shadow: 5px 5px 5px  rgb(2, 0, 131) inset;
+      }
+    
+    /*the bellow styles the celebrate video for choosing the correct answer*/
+    #vid {
+    margin-left: auto;
+    margin-right: auto;
+    }
+    /*styling the body below was just so that the default background colour is black to match the theme and white text used*/
+    body {
+        background-color: black;
+        z-index: -1;
+    }

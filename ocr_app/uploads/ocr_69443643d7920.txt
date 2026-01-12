@@ -1,0 +1,25 @@
+THIS DOCUMENTATION 1S COMPLIGNT WITH THE NATIONAL ROAD TRAFFIC AMENDMENT ACT, 64 OF 2008
+a
+Horse Registration WEHICLE
+Weighbridge Name = oad train weighbnage?
+Company Name assmang Blackrock Mine Operation
+Site Name aan
+Product
+Eee Proweigh" | Version 4.6.2 COPY
+sMso0000019 2022/09/02 13:47
+| Type pres vs ary
+| Operator Private ad aa
+| Contact Person er ures oe
+[surance rover Fe
+a
+a
+| Firsi Weigh Details Second Weigh Details Weigh Calculations
+Weight (kg) 21,000 Weight {kal 56,000 ETT Weight (kg) 35,000
+Date Time 2022109002 13:43 Date Time 2022109002 13:46 Product ETT (kg) 36,000
+‘Operator 5a Operator Sa Total Difference 36,0000
+Total Cost o.00
+Group 1 F600 Foo -100
+Group 2 16.000 13,000 -2,000
+Group 3 16,000 13,000 -2,000
+Group 4 16.400 12,000 1,600
+TOTALS 6,00H) 617M 700 Speed 0.00 keh

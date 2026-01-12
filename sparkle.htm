@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Sparkle Page</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    background: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Sparkle trail */
+  .sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    animation: fadeOut 0.7s forwards;
+  }
+
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+  }
+
+  /* Explosion on click */
+  .explosion {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    animation: explode 0.8s forwards;
+  }
+
+  @keyframes explode {
+    to {
+      transform: translate(var(--dx), var(--dy)) scale(0.2);
+      opacity: 0;
+    }
+  }
+
+  #price {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    transition: color 0.3s;
+  }
+
+  #change {
+    font-size: 1.2rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>Bitcoin Price (USD)</h1>
+<div id="price">Loading...</div>
+<div id="change"></div>
+
+<script>
+const colors = ['#ff0', '#f0f', '#0ff', '#fff', '#ffd700', '#ff69b4'];
+let lastPrice = null;
+
+// --- Sparkle Trail ---
+document.addEventListener('mousemove', e => createTrailSparkle(e.pageX, e.pageY));
+document.addEventListener('click', e => createExplosion(e.pageX, e.pageY));
+
+function createTrailSparkle(x, y) {
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    sparkle.style.left = x + 'px';
+    sparkle.style.top = y + 'px';
+    sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+    const size = Math.random() * 5 + 3;
+    sparkle.style.width = size + 'px';
+    sparkle.style.height = size + 'px';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 700);
+}
+
+function createExplosion(x, y) {
+    const count = 120;
+    for (let i = 0; i < count; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('explosion');
+        sparkle.style.left = x + 'px';
+        sparkle.style.top = y + 'px';
+        sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        const size = Math.random() * 6 + 4;
+        sparkle.style.width = size + 'px';
+        sparkle.style.height = size + 'px';
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 120 + 50;
+        sparkle.style.setProperty('--dx', distance * Math.cos(angle) + 'px');
+        sparkle.style.setProperty('--dy', distance * Math.sin(angle) + 'px');
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 800);
+    }
+}
+
+// --- Bitcoin Price ---
+async function getBitcoinPrice() {
+    try {
+        const response = await fetch('getBitcoinPrice.php'); // local proxy
+        const data = await response.json();
+        const price = data.bitcoin.usd;
+        const priceDiv = document.getElementById('price');
+        const changeDiv = document.getElementById('change');
+
+        if (lastPrice !== null) {
+            if (price > lastPrice) {
+                priceDiv.style.color = '#0f0';
+                changeDiv.textContent = `▲ +$${(price - lastPrice).toFixed(2)}`;
+                changeDiv.style.color = '#0f0';
+            } else if (price < lastPrice) {
+                priceDiv.style.color = '#f00';
+                changeDiv.textContent = `▼ -$${(lastPrice - price).toFixed(2)}`;
+                changeDiv.style.color = '#f00';
+            } else {
+                priceDiv.style.color = '#fff';
+                changeDiv.textContent = '';
+            }
+        }
+
+        priceDiv.textContent = `$${price.toLocaleString()}`;
+        lastPrice = price;
+    } catch (error) {
+        console.error('Error fetching Bitcoin price:', error);
+        document.getElementById('price').textContent = 'Error fetching price';
+        document.getElementById('change').textContent = error.message || error;
+    }
+}
+
+// Fetch price every 15 seconds to avoid rate limits
+getBitcoinPrice();
+setInterval(getBitcoinPrice, 15000);
+</script>
+
+</body>
+</html>
